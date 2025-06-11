@@ -1,0 +1,28 @@
+---
+import Button from "../../../shared/ui/button/button.astro";
+import Container from "../../../shared/ui/container/container.astro";
+---
+
+<header class="mt-3">
+  <Container>
+    <div class="flex items-center justify-between">
+      <a class="font-heading text-8xl flex" href="/">
+        <span>Re</span>
+        <span class="text-gray-200">memo</span>
+        <span>rator</span>
+      </a>
+      <div class="flex items-center gap-[4vw]">
+        <Button circle variant="light">en</Button>
+        <Button variant="dark">light</Button>
+        <div class="flex gap-4">
+          <Button variant="light">log in</Button>
+          <Button variant="dark">sign in</Button>
+        </div>
+        <div>
+          <Button circle variant="accent" size="medium">An</Button>
+          <nav></nav>
+        </div>
+      </div>
+    </div>
+  </Container>
+</header>

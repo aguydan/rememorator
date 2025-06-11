@@ -1,0 +1,37 @@
+---
+interface Props {
+  size?: "regular" | "medium" | "big";
+  circle?: boolean;
+  variant?: "light" | "dark" | "accent";
+}
+
+const { size = "regular", circle = false, variant = "light" } = Astro.props;
+
+const classes = {
+  regular: {
+    base: "text-xl px-5 py-2 rounded-2xl",
+    circle: "text-xl w-12 h-12 rounded-full",
+  },
+  medium: {
+    base: "font-medium text-2xl px-6 py-4 rounded-2xl",
+    circle: "font-medium w-18 h-18 rounded-full",
+  },
+  big: {
+    base: "",
+    circle: "",
+  },
+  light: "bg-gray-300 hover:bg-gray-100",
+  dark: "bg-gray-700 text-white hover:bg-gray-500",
+  accent: "bg-blue-300 text-white hover:bg-blue-100",
+};
+---
+
+<button
+  class:list={[
+    classes[size][circle ? "circle" : "base"],
+    classes[variant],
+    "cursor-pointer",
+  ]}
+>
+  <slot />
+</button>

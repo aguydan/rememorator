@@ -1,0 +1,25 @@
+{
+  "name": "rememorator",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource/geist-mono": "^5.2.6",
+    "@fontsource/ibm-plex-mono": "^5.2.6",
+    "@fontsource/inter": "^5.2.6",
+    "@prisma/client": "^6.9.0",
+    "@tailwindcss/vite": "^4.1.8",
+    "astro": "^5.9.1",
+    "tailwindcss": "^4.1.8"
+  },
+  "devDependencies": {
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-prisma": "^5.0.0",
+    "prisma": "^6.9.0"
+  }
+}

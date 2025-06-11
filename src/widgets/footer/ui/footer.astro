@@ -1,0 +1,29 @@
+---
+import Container from "../../../shared/ui/container/container.astro";
+---
+
+<footer class="relative bg-gray-100 rounded-t-4xl overflow-hidden">
+  <div class="absolute flex justify-between w-full" aria-hidden="true">
+    <div class="relative -top-40 w-[40rem] h-[40rem] bg-blue-400 rounded-full">
+    </div>
+    <div class="rotate-340 font-heading text-yellow-300 text-9xl flex flex-col">
+      <span>Re</span>
+      <span>fridge</span>
+      <span>rator</span>
+    </div>
+    <div class="rotate-88 w-[40rem] h-[40rem] bg-yellow-300 rounded-4xl"></div>
+  </div>
+  <Container>
+    <form class="relative text-white">
+      <h3 class="font-heading text-6xl">Contact Us</h3>
+      <p class="font-meium text-xl">
+        Let us know if there’s anything to improve about the app!
+      </p>
+      <input type="text" name="username" placeholder="Your name" />
+      <input type="text" name="message" placeholder="Your message" />
+    </form>
+    <p class="mt-120 text-xl text-gray-500 text-center">
+      @2025 Rememorator - Daniil Pivovarov. All rights reserved.
+    </p>
+  </Container>
+</footer>
