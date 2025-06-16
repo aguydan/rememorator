@@ -1,7 +1,29 @@
-<section>
-  <h1>The Why</h1>
+---
+import FeedHeading from "../../../shared/ui/feed-heading/feed-heading.astro";
+---
+
+<section class="bg-gray-100 px-12 max-w-[70rem] rounded-4xl mt-55 h-[60rem]">
+  <h1 class="font-heading underline text-7xl text-gray-500 relative -top-9">
+    The Why
+  </h1>
   <article>
-    <h2>I forfeit</h2>
-    <p></p>
+    <FeedHeading variant="filled">It is useful</FeedHeading>
+    <p class="font-primary text-xl text-gray-600">
+      Rememorator helps your mind stay focused on other tasks while it is
+      focused on your food storage. It is your personal food assistant or some
+      shit like that.
+    </p>
+    <img src="" alt="" />
   </article>
+  <hr class="text-gray-200 mt-10" />
+  <article>
+    <FeedHeading number={2}>It is useful <br /> Hello</FeedHeading>
+    <p class="font-primary text-xl text-gray-600">
+      Rememorator helps your mind stay focused on other tasks while it is
+      focused on your food storage. It is your personal food assistant or some
+      shit like that.
+    </p>
+    <img src="" alt="" />
+  </article>
+  <hr class="text-gray-200 mt-10" />
 </section>

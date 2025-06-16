@@ -1,0 +1,28 @@
+---
+interface Props {
+  number?: number;
+  variant?: "filled" | "empty";
+}
+
+const { number = 1, variant = "empty" } = Astro.props;
+
+const classes = {
+  filled:
+    "text-white before:rounded-3xl before:-left-8 before:inset-0 before:-inset-y-2 before:bg-blue-300",
+  empty: "text-yellow-200",
+};
+---
+
+<div class="mt-20 mb-10 relative min-h-22">
+  <div
+    class:list={[
+      classes[variant],
+      "font-heading text-8xl rotate-355 isolate absolute -left-7.5 -top-5 before:absolute before:-z-1",
+    ]}
+  >
+    {number + "."}
+  </div>
+  <h2 class="relative font-secondary text-4xl/14 font-medium ml-12">
+    <slot />
+  </h2>
+</div>

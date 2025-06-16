@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.0",
     "@fontsource/geist-mono": "^5.2.6",
     "@fontsource/ibm-plex-mono": "^5.2.6",
     "@fontsource/inter": "^5.2.6",
