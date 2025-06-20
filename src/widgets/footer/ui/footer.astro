@@ -1,28 +1,47 @@
 ---
-import Container from "../../../shared/ui/container/container.astro";
+import Container from "@/shared/ui/container/container.astro";
+import Input from "@/shared/ui/input/input.astro";
 ---
 
 <footer class="relative bg-gray-100 rounded-t-4xl overflow-hidden">
-  <div class="absolute flex justify-between w-full" aria-hidden="true">
-    <div class="relative -top-40 w-[40rem] h-[40rem] bg-blue-400 rounded-full">
-    </div>
-    <div class="rotate-340 font-heading text-yellow-300 text-9xl flex flex-col">
-      <span>Re</span>
-      <span>fridge</span>
-      <span>rator</span>
-    </div>
-    <div class="rotate-88 w-[40rem] h-[40rem] bg-yellow-300 rounded-4xl"></div>
-  </div>
   <Container>
-    <form class="relative text-white">
-      <h3 class="font-heading text-6xl">Contact Us</h3>
-      <p class="font-meium text-xl">
-        Let us know if there’s anything to improve about the app!
-      </p>
-      <input type="text" name="username" placeholder="Your name" />
-      <input type="text" name="message" placeholder="Your message" />
+    <div class="absolute w-full" aria-hidden="true">
+      <div
+        class="absolute -left-40 -top-50 w-[44rem] h-[44rem] bg-blue-400 rounded-full"
+      >
+      </div>
+      <div
+        class="absolute right-180 top-4 -rotate-16 font-heading text-yellow-300 text-9xl/30 flex flex-col"
+      >
+        <span>Re</span>
+        <span>fridge</span>
+        <span>rator</span>
+      </div>
+      <div
+        class="absolute -right-30 -rotate-2 top-8 w-[50rem] h-[40rem] bg-yellow-300 rounded-4xl"
+      >
+      </div>
+    </div>
+    <h3
+      class="relative text-white font-heading font-medium text-3xl sm:text-6xl mt-16"
+    >
+      Contact Us
+    </h3>
+    <form class="relative text-white max-w-[35rem]">
+      <fieldset class="flex flex-col mt-10 gap-6 min-w-0">
+        <legend class="font-medium text-xl max-w-[25rem]">
+          Let us know if there’s anything to improve about the app!
+        </legend>
+        <Input
+          class="mt-14"
+          type="text"
+          name="username"
+          placeholder="Your name"
+        />
+        <Input type="text" name="message" placeholder="Your suggestion" />
+      </fieldset>
     </form>
-    <p class="mt-120 text-xl text-gray-500 text-center">
+    <p class="mt-34 mb-8 text-xl text-gray-400 text-center relative">
       @2025 Rememorator - Daniil Pivovarov. All rights reserved.
     </p>
   </Container>

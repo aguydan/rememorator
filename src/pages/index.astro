@@ -1,15 +1,20 @@
 ---
-import Layout from "../widgets/layouts/base-layout/base-layout.astro";
-import Feed from "../widgets/feed/ui/feed.astro";
-import Button from "../shared/ui/button/button.astro";
+import Layout from "@/widgets/layouts/base-layout/base-layout.astro";
+import Feed from "@/widgets/feed/ui/feed.astro";
+import Button from "@/shared/ui/button/button.astro";
+import Container from "@/shared/ui/container/container.astro";
 ---
 
 <Layout>
-  <div class="max-w-9/10 m-auto">
-    <div class="flex items-center gap-6 mt-30">
-      <p class="font-medium text-2xl">Let the fridge be your memory ;)</p>
-      <Button size="medium" variant="accent">Open my fridge</Button>
+  <Container>
+    <div class="flex flex-col text-center md:flex-row items-center gap-6 mt-30">
+      <p class="font-medium text-xl xl:text-2xl">
+        Let the fridge be your memory ;)
+      </p>
+      <a href="/fridge">
+        <Button size="medium" variant="blue">Open my fridge</Button>
+      </a>
     </div>
     <Feed />
-  </div>
+  </Container>
 </Layout>
