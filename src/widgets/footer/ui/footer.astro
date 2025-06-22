@@ -3,45 +3,49 @@ import Container from "@/shared/ui/container/container.astro";
 import Input from "@/shared/ui/input/input.astro";
 ---
 
-<footer class="relative bg-gray-100 rounded-t-4xl overflow-hidden">
+<footer
+  class="bg-gray-100 rounded-t-4xl overflow-hidden relative z-0 @container"
+>
   <Container>
-    <div class="absolute w-full" aria-hidden="true">
+    <div class="flex flex-col xl:flex-row items-center xl:items-start">
       <div
-        class="absolute -left-40 -top-50 w-[44rem] h-[44rem] bg-blue-400 rounded-full"
+        class="relative text-white before:absolute before:w-[44rem] before:h-[44rem] before:bg-blue-400 before:rounded-full before:-z-1 before:-top-40 before:-left-50"
       >
+        <h3 class="font-heading font-medium text-3xl md:text-6xl mt-16">
+          Contact Us
+        </h3>
+        <form>
+          <fieldset class="flex flex-col mt-10 gap-6 xl:min-w-[32rem]">
+            <legend class="font-medium text-xl max-w-[25rem]">
+              Let us know if there’s anything to improve about the app!
+            </legend>
+            <Input
+              class="mt-14"
+              type="text"
+              name="username"
+              placeholder="Your name"
+            />
+            <Input type="text" name="message" placeholder="Your suggestion" />
+          </fieldset>
+        </form>
       </div>
-      <div
-        class="absolute right-180 top-4 -rotate-16 font-heading text-yellow-300 text-9xl/30 flex flex-col"
-      >
-        <span>Re</span>
-        <span>fridge</span>
-        <span>rator</span>
-      </div>
-      <div
-        class="absolute -right-30 -rotate-2 top-8 w-[50rem] h-[40rem] bg-yellow-300 rounded-4xl"
-      >
+      <div class="relative xl:flex-1 overflow-visible" aria-hidden="true">
+        <div
+          class="absolute translate-x-[-48%] xl:left-[23cqw] top-20 -rotate-16 font-heading text-white xl:text-yellow-300 text-[clamp(4rem,22cqw,8rem)]/[clamp(4rem,22cqw,8rem)] xl:text-[7cqw]/[6.4cqw] flex flex-col z-20"
+        >
+          <span>Re</span>
+          <span>fridge</span>
+          <span>rator</span>
+        </div>
+        <div
+          class="absolute -left-100 xl:left-[38cqw] top-20 xl:-bottom-80 w-[50rem] h-[40rem] -rotate-2 bg-yellow-300 rounded-4xl"
+        >
+        </div>
       </div>
     </div>
-    <h3
-      class="relative text-white font-heading font-medium text-3xl sm:text-6xl mt-16"
+    <p
+      class="mt-[clamp(21rem,1.6rem+96vw,35rem)] xl:mt-40 mb-5 md:mb-10 text-lg md:text-xl text-gray-400 text-center relative"
     >
-      Contact Us
-    </h3>
-    <form class="relative text-white max-w-[35rem]">
-      <fieldset class="flex flex-col mt-10 gap-6 min-w-0">
-        <legend class="font-medium text-xl max-w-[25rem]">
-          Let us know if there’s anything to improve about the app!
-        </legend>
-        <Input
-          class="mt-14"
-          type="text"
-          name="username"
-          placeholder="Your name"
-        />
-        <Input type="text" name="message" placeholder="Your suggestion" />
-      </fieldset>
-    </form>
-    <p class="mt-34 mb-8 text-xl text-gray-400 text-center relative">
       @2025 Rememorator - Daniil Pivovarov. All rights reserved.
     </p>
   </Container>
