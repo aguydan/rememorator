@@ -6,3 +6,4 @@
   --font-secondary: "Geist Mono", "sans-serif";
 }
 
+@custom-variant dark (&:where(.dark, .dark *));

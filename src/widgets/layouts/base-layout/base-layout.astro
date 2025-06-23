@@ -8,8 +8,8 @@ import "@fontsource/inter/500.css";
 
 import "../../../styles/global.css";
 
-import Header from "../../header/ui/header.astro";
-import Footer from "../../footer/ui/footer.astro";
+import Header from "@/widgets/header/ui/header.astro";
+import Footer from "@/widgets/footer/ui/footer.astro";
 ---
 
 <!doctype html>
@@ -20,6 +20,14 @@ import Footer from "../../footer/ui/footer.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
+    <script>
+      document.documentElement.classList.toggle(
+        "dark",
+        localStorage.theme === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches),
+      );
+    </script>
   </head>
   <body>
     <Header />
