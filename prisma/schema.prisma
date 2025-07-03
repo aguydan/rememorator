@@ -5,8 +5,9 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "esm"
 }
 
 datasource db {
@@ -21,55 +22,57 @@ enum Role {
 }
 
 model User {
-  id                 Int                @id @default(autoincrement())
-  email              String             @unique
+  id                 String             @id @default(cuid())
   name               String?
-  hash               String
+  email              String             @unique
+  emailVerified      DateTime?
+  image              String?
+  accounts           Account[]
+  sessions           Session[]
   role               Role               @default(USER)
   fridge             Fridge             @relation(fields: [fridgeId], references: [id])
-  fridgeId           Int                @unique
+  fridgeId           String             @unique
   friendships        Friendship[]       @relation("UserToFriend")
   friendOf           Friendship[]       @relation("FriendToUser")
   productFrequencies ProductFrequency[]
   recipes            Recipe[]
-  createdAt          DateTime           @default(now())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Friendship {
-  user     User @relation("UserToFriend", fields: [userId], references: [id])
-  userId   Int
-  friend   User @relation("FriendToUser", fields: [friendId], references: [id])
-  friendId Int
+  user     User   @relation("UserToFriend", fields: [userId], references: [id])
+  userId   String
+  friend   User   @relation("FriendToUser", fields: [friendId], references: [id])
+  friendId String
 
   @@id([userId, friendId])
 }
 
 model Fridge {
-  id             Int             @id @default(autoincrement())
+  id             String          @id @default(cuid())
   user           User?
   storedProducts StoredProduct[]
   meals          Meal[]
 }
 
 model Product {
-  id                  Int                @id @default(autoincrement())
-  name                String
-  shelfLife           Int
-  nutritionalContents String?
-  dietaryRequirements String?
-  allergens           String?
-  category            ProductCategory?   @relation(fields: [categoryId], references: [id])
-  categoryId          Int?
-  frequencies         ProductFrequency[]
-  storedProducts      StoredProduct[]
-  recipes             ProductInRecipe[]
+  id             String             @id @default(cuid())
+  name           String
+  shelfLife      Int
+  category       ProductCategory?   @relation(fields: [categoryId], references: [id])
+  categoryId     String?
+  frequencies    ProductFrequency[]
+  storedProducts StoredProduct[]
+  recipes        ProductInRecipe[]
 }
 
 model StoredProduct {
   fridge    Fridge   @relation(fields: [fridgeId], references: [id])
-  fridgeId  Int
+  fridgeId  String
   product   Product  @relation(fields: [productId], references: [id])
-  productId Int
+  productId String
   quantity  Int
   addedAt   DateTime @default(now())
 
@@ -77,7 +80,7 @@ model StoredProduct {
 }
 
 model ProductCategory {
-  id       Int       @id @default(autoincrement())
+  id       String    @id @default(cuid())
   name     String
   products Product[]
 }
@@ -85,33 +88,30 @@ model ProductCategory {
 /// Counts how many times user adds a certain product
 model ProductFrequency {
   user      User    @relation(fields: [userId], references: [id])
-  userId    Int
+  userId    String
   product   Product @relation(fields: [productId], references: [id])
-  productId Int
+  productId String
   frequency Int
 
   @@id([userId, productId])
 }
 
 model Recipe {
-  id                  Int               @id @default(autoincrement())
-  name                String
-  content             String
-  shelfLife           Int
-  nutritionalContents String?
-  dietaryRequirements String?
-  allergens           String?
-  user                User              @relation(fields: [userId], references: [id])
-  userId              Int
-  products            ProductInRecipe[]
-  meals               Meal[]
+  id        String            @id @default(cuid())
+  name      String
+  content   String
+  shelfLife Int
+  user      User              @relation(fields: [userId], references: [id])
+  userId    String
+  products  ProductInRecipe[]
+  meals     Meal[]
 }
 
 model Meal {
   fridge   Fridge   @relation(fields: [fridgeId], references: [id])
-  fridgeId Int
+  fridgeId String
   recipe   Recipe   @relation(fields: [recipeId], references: [id])
-  recipeId Int
+  recipeId String
   quantity Int
   addedAt  DateTime @default(now())
 
@@ -120,10 +120,50 @@ model Meal {
 
 model ProductInRecipe {
   recipe    Recipe  @relation(fields: [recipeId], references: [id])
-  recipeId  Int
+  recipeId  String
   product   Product @relation(fields: [productId], references: [id])
-  productId Int
+  productId String
   frequency Int
 
   @@id([recipeId, productId])
+}
+
+// Auth
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
 }

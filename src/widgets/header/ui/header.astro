@@ -1,6 +1,7 @@
 ---
-import ThemeToggleButton from "@/features/theme-toggle/ui/theme-toggle-button.astro";
-import Button from "@/shared/ui/button/button.astro";
+import ToggleThemeButton from "@/features/theme-toggle/ui/toggle-theme-button";
+import SignInButton from "@/widgets/auth/ui/signin-button/signin-button";
+import Button from "@/shared/ui/button/button";
 import Container from "@/shared/ui/container/container.astro";
 ---
 
@@ -14,21 +15,20 @@ import Container from "@/shared/ui/container/container.astro";
       </a>
       <div class="items-center gap-18 hidden xl:flex">
         <Button circle variant="light">en</Button>
-        <ThemeToggleButton />
+        <ToggleThemeButton client:idle />
         <div class="flex gap-4">
-          <Button variant="light">log in</Button>
-          <Button variant="dark">sign in</Button>
+          <SignInButton client:idle />
         </div>
         <div>
-          <Button class="text-4xl" circle variant="blue" size="medium">
+          <Button className="text-4xl" circle variant="blue" size="medium">
             An
           </Button>
-          <nav></nav>
         </div>
       </div>
       <div class="xl:hidden">
-        <Button class="text-4xl" circle variant="blue" size="regular">An</Button
-        >
+        <Button className="text-4xl" circle variant="blue" size="regular">
+          An
+        </Button>
       </div>
     </div>
   </Container>

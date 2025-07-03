@@ -1,19 +1,11 @@
----
-import type { HTMLAttributes } from "astro/types";
+import type { ButtonHTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
-interface Props extends HTMLAttributes<"button"> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "regular" | "medium" | "big";
   circle?: boolean;
   variant?: "light" | "dark" | "blue" | "red";
 }
-
-const {
-  class: className,
-  size = "regular",
-  circle = false,
-  variant = "light",
-  ...attrs
-} = Astro.props;
 
 const classes = {
   regular: {
@@ -33,16 +25,26 @@ const classes = {
   blue: "bg-blue-300 text-white hover:bg-blue-100",
   red: "bg-red-300 text-white hover:bg-red-100",
 };
----
 
-<button
-  class:list={[
-    classes[size][circle ? "circle" : "base"],
-    classes[variant],
-    "cursor-pointer",
-    className,
-  ]}
-  {...attrs}
->
-  <slot />
-</button>
+export default function Button({
+  size = "regular",
+  circle = false,
+  variant = "light",
+  children,
+  className,
+  ...props
+}: ButtonProps) {
+  return (
+    <button
+      className={twMerge(
+        classes[size][circle ? "circle" : "base"],
+        classes[variant],
+        "cursor-pointer",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
