@@ -1,5 +1,5 @@
 ---
-import Button from "@/shared/ui/button/button";
+import CircleButton from "@/shared/ui/circle-button";
 ---
 
 <section
@@ -13,6 +13,6 @@ import Button from "@/shared/ui/button/button";
     class="absolute inset-x-0 h-16 rotate-11 rounded-full bg-gray-300 after:absolute after:inset-0 after:bg-red-300 after:rounded-full after:-rotate-22"
   >
   </div>
-  <Button class="absolute -left-[1rem] z-20" circle variant="blue" />
-  <Button class="absolute -right-[1rem] z-20" circle variant="red" />
+  <CircleButton className="absolute -left-[1rem] z-20" variant="accent-1" />
+  <CircleButton className="absolute -right-[1rem] z-20" variant="accent-2" />
 </section>

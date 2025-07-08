@@ -1,7 +1,7 @@
 ---
-import ToggleThemeButton from "@/features/theme-toggle/ui/toggle-theme-button";
+import ToggleThemeButton from "@/features/theme-toggle/ui";
 import SignInButton from "@/widgets/auth/ui/signin-button/signin-button";
-import Button from "@/shared/ui/button/button";
+import CircleButton from "@/shared/ui/circle-button";
 import Container from "@/shared/ui/container/container.astro";
 ---
 
@@ -14,21 +14,17 @@ import Container from "@/shared/ui/container/container.astro";
         <span>rator</span>
       </a>
       <div class="items-center gap-18 hidden xl:flex">
-        <Button circle variant="light">en</Button>
+        <CircleButton variant="light">en</CircleButton>
         <ToggleThemeButton client:idle />
         <div class="flex gap-4">
           <SignInButton client:idle />
         </div>
         <div>
-          <Button className="text-4xl" circle variant="blue" size="medium">
-            An
-          </Button>
+          <CircleButton variant="accent-1" size="medium"> An </CircleButton>
         </div>
       </div>
       <div class="xl:hidden">
-        <Button className="text-4xl" circle variant="blue" size="regular">
-          An
-        </Button>
+        <CircleButton variant="accent-1" size="regular"> An </CircleButton>
       </div>
     </div>
   </Container>

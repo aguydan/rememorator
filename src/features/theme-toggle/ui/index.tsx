@@ -1,4 +1,4 @@
-import Button from "@/shared/ui/button/button";
+import Button from "@/shared/ui/button";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -35,7 +35,7 @@ export default function ToggleThemeButton() {
       <div
         className={twMerge(
           classes[theme],
-          "relative w-[1lh] h-[1lh] rounded-xl bg-gray-400 transition-all ease-in-out",
+          "mr-auto relative w-[1lh] h-[1lh] rounded-xl bg-gray-400 transition-all ease-in-out",
         )}
       ></div>
     </Button>

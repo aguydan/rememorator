@@ -30,8 +30,8 @@ model User {
   accounts           Account[]
   sessions           Session[]
   role               Role               @default(USER)
-  fridge             Fridge             @relation(fields: [fridgeId], references: [id])
-  fridgeId           String             @unique
+  fridge             Fridge?            @relation(fields: [fridgeId], references: [id])
+  fridgeId           String?            @unique
   friendships        Friendship[]       @relation("UserToFriend")
   friendOf           Friendship[]       @relation("FriendToUser")
   productFrequencies ProductFrequency[]

@@ -1,7 +1,7 @@
-import Button from "@/shared/ui/button/button";
-import { createPortal } from "react-dom";
+import Button from "@/shared/ui/button";
 import SignInForm from "@/widgets/auth/ui/signin-form";
-import { useDisclosure } from "@/shared/lib/modal/use-disclosure/use-disclosure";
+import { useDisclosure } from "@/shared/lib/modal/use-disclosure";
+import Popup from "@/shared/ui/popup";
 
 export default function SignInButton() {
   const [open, openModal, closeModal] = useDisclosure();
@@ -11,8 +11,13 @@ export default function SignInButton() {
       <Button variant="dark" onClick={openModal}>
         sign in
       </Button>
-      {open &&
-        createPortal(<SignInForm handleClick={closeModal} />, document.body)}
+      <Popup
+        isOpen={open}
+        closeModal={closeModal}
+        aside={<Popup.Label>Join Rememorator</Popup.Label>}
+      >
+        <SignInForm />
+      </Popup>
     </>
   );
 }

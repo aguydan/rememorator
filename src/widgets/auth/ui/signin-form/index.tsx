@@ -1,13 +1,12 @@
-import Button from "@/shared/ui/button/button";
-import Input from "@/shared/ui/input/input";
+import Button from "@/shared/ui/button";
+import Input from "@/shared/ui/input";
 import { signIn } from "auth-astro/client";
 import { useEffect, useRef, type FormEvent } from "react";
+import { credentialsSchema } from "@/widgets/auth/model/credentials";
 
-interface SignInFormProps {
-  handleClick: () => void;
-}
+interface SignInFormProps {}
 
-export default function SignInForm({ handleClick }: SignInFormProps) {
+export default function SignInForm() {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -19,47 +18,54 @@ export default function SignInForm({ handleClick }: SignInFormProps) {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("email", "wait@gmail.com");
+    const result = credentialsSchema.safeParse();
 
-    console.log("hello", formData);
-
-    const a = await signIn("mailgun", {}, formData);
-
-    console.log(a);
+    if (!result.success) {
+    }
   };
 
   return (
-    <div
-      className="absolute top-0 w-[100vw] h-[100vh] z-10 backdrop-blur-xl"
-      onClick={handleClick}
-    >
-      <div
-        role="dialog"
-        onClick={(e) => e.stopPropagation()}
-        className="absolute p-8 w-100 bg-gray-200 z-50 top-[50%] left-[50%] -translate-[50%] rounded-3xl"
+    <div>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-6 mb-3 items-center"
       >
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-6 mb-3 items-center"
-        >
-          <Input ref={inputRef} label="Name" type="text" name="username" />
-          <Input
-            label="Email"
-            type="text"
-            name="email"
-            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-          />
-          <Button className="mt-6" type="submit">
-            Sign in
-          </Button>
-        </form>
+        <Input
+          ref={inputRef}
+          label="Email"
+          type="email"
+          name="email"
+          required
+          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+        />
+        <Input
+          label="Password"
+          type="password"
+          name="password"
+          required
+          minLength={8}
+        />
+        <Button className="mt-6" type="submit">
+          sign up
+        </Button>
+      </form>
+      {/* to a separate component */}
+      <div className="flex flex-col gap-3">
         <Button
-          className="block mx-auto"
-          variant="blue"
+          leftIcon={<img src="sprite/google.svg" alt="" />}
+          className="mx-auto"
+          variant="dark"
           onClick={() => signIn("google")}
         >
-          Sign in with Google
+          sign in with Google
+        </Button>
+        <Button
+          leftIcon={<img src="sprite/yandex.svg" alt="" />}
+          className="mx-auto"
+          variant="accent-2"
+          onClick={() => signIn("yandex")}
+        >
+          sign in with Yandex
         </Button>
       </div>
     </div>
