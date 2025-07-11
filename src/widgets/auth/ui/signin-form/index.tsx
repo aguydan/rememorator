@@ -1,12 +1,26 @@
 import Button from "@/shared/ui/button";
 import Input from "@/shared/ui/input";
 import { signIn } from "auth-astro/client";
-import { useEffect, useRef, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+} from "react";
 import { credentialsSchema } from "@/widgets/auth/model/credentials";
+import type { z } from "astro:schema";
 
-interface SignInFormProps {}
+type SignInFormFields = z.infer<typeof credentialsSchema>;
+type SignInFormErrors = { [K in keyof SignInFormFields]?: string[] };
 
 export default function SignInForm() {
+  const [data, setData] = useState<SignInFormFields>({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState<SignInFormErrors>({});
+
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -15,14 +29,31 @@ export default function SignInForm() {
     }
   }, []);
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const result = credentialsSchema.safeParse();
+    const result = credentialsSchema.safeParse(data);
 
     if (!result.success) {
+      setErrors(result.error.formErrors.fieldErrors);
+
+      return;
     }
   };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const result = credentialsSchema.safeParse(data);
+
+    if (!result.success) {
+      setErrors(result.error.formErrors.fieldErrors);
+    } else {
+      setErrors({});
+    }
+
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  //handle blur
 
   return (
     <div>
@@ -31,19 +62,23 @@ export default function SignInForm() {
         className="flex flex-col gap-6 mb-3 items-center"
       >
         <Input
+          onChange={handleChange}
+          value={data.email}
           ref={inputRef}
           label="Email"
           type="email"
           name="email"
           required
-          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+          errors={errors.email}
         />
         <Input
+          onChange={handleChange}
+          value={data.password}
           label="Password"
           type="password"
           name="password"
           required
-          minLength={8}
+          errors={errors.password}
         />
         <Button className="mt-6" type="submit">
           sign up

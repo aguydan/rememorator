@@ -1,30 +1,30 @@
 ---
-import ToggleThemeButton from "@/features/theme-toggle/ui";
-import SignInButton from "@/widgets/auth/ui/signin-button/signin-button";
 import CircleButton from "@/shared/ui/circle-button";
+import HeaderButtons from "@/widgets/header/ui/buttons";
+import HeaderMenuButton from "@/widgets/header/ui/menu/button";
 import Container from "@/shared/ui/container/container.astro";
+
+// make header sticky
 ---
 
 <header class="pt-3 dark:bg-black">
   <Container>
     <div class="flex items-center justify-between">
-      <a class="font-heading text-3xl 2xl:text-7xl flex" href="/">
+      <a
+        class="font-heading text-3xl 2xl:text-7xl flex"
+        href="/"
+        aria-label="Home"
+      >
         <span>Re</span>
         <span class="text-gray-200">memo</span>
         <span>rator</span>
       </a>
       <div class="items-center gap-18 hidden xl:flex">
-        <CircleButton variant="light">en</CircleButton>
-        <ToggleThemeButton client:idle />
-        <div class="flex gap-4">
-          <SignInButton client:idle />
-        </div>
-        <div>
-          <CircleButton variant="accent-1" size="medium"> An </CircleButton>
-        </div>
+        <HeaderButtons client:idle />
+        <CircleButton variant="accent-1" size="medium">An</CircleButton>
       </div>
-      <div class="xl:hidden">
-        <CircleButton variant="accent-1" size="regular"> An </CircleButton>
+      <div class="relative z-1 xl:hidden">
+        <HeaderMenuButton client:idle />
       </div>
     </div>
   </Container>

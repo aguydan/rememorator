@@ -31,7 +31,11 @@ export default function ToggleThemeButton() {
   }
 
   return (
-    <Button onClick={toggleTheme} className="px-2 min-w-22">
+    <Button
+      onClick={toggleTheme}
+      className="px-2 min-w-22"
+      aria-label="Toggle theme"
+    >
       <div
         className={twMerge(
           classes[theme],

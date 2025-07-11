@@ -7,7 +7,11 @@ export default function AddProductButton() {
 
   return (
     <>
-      <Button className="font-normal" size="medium" onClick={openModal}>
+      <Button
+        className="font-normal justify-center"
+        size="medium"
+        onClick={openModal}
+      >
         add product
       </Button>
       <Popup

@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   labelHidden?: boolean;
-  isError?: boolean;
+  errors?: string[];
   variant?: "filled" | "empty";
 }
 
@@ -13,12 +13,16 @@ const classes = {
   empty: "border-b-black border-b",
 };
 
+// extract animations into an external object or something
+// delete astro component input
+// add empty variant (or just see if it actually works)
+
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       required,
       label,
-      isError = false,
+      errors,
       labelHidden = false,
       variant = "filled",
       className,
@@ -33,7 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             className={twMerge(
               "font-secondary pl-6 text-gray-500",
               labelHidden && "hidden",
-              isError && "text-red-400",
+              errors && "text-red-400",
             )}
           >
             {label}
@@ -46,11 +50,17 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={twMerge(
             "text-xl py-3 transition-all outline-3 outline-transparent -outline-offset-4 focus-visible:outline-offset-0 focus-visible:outline-gray-400 w-[min(20rem,_100%)]",
             classes[variant],
-            isError && "outline-offset-0 outline-red-400",
+            errors && "outline-offset-0 outline-red-400",
             className,
           )}
           {...props}
         />
+        {errors &&
+          errors.map((error, index) => (
+            <span key={index} className="text-red-400">
+              {error}
+            </span>
+          ))}
       </label>
     );
   },

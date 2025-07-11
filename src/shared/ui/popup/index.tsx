@@ -27,7 +27,7 @@ export default function Popup({
           className,
         )}
       >
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 justify-between">
           {aside}
           <span
             style={{ writingMode: "sideways-lr" }}
