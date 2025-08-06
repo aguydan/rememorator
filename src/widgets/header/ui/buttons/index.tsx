@@ -10,7 +10,7 @@ export default function HeaderButtons({ className }: HeaderButtonsProps) {
   return (
     <div className={twMerge("flex gap-0 sm:gap-18 items-center", className)}>
       <CircleButton variant="light" aria-label="Select language">
-        en
+        ru
       </CircleButton>
       <ToggleThemeButton />
       <div className="flex gap-4">

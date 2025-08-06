@@ -10,6 +10,7 @@ export default function AddProductButton() {
       <Button
         className="font-normal justify-center"
         size="medium"
+        variant="white"
         onClick={openModal}
       >
         add product
@@ -19,8 +20,12 @@ export default function AddProductButton() {
         closeModal={closeModal}
         aside={
           <>
-            <Button size="large">Find item</Button>
-            <Button size="large">Add new</Button>
+            <Button size="large" className="bg-gray-200 text-gray-700">
+              Find item
+            </Button>
+            <Button size="large" variant="accent-1">
+              Add new
+            </Button>
           </>
         }
       >

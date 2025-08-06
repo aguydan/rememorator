@@ -8,7 +8,7 @@ export default function HeaderMenuButton() {
   return (
     <>
       <CircleButton
-        className="my-4 w-14 h-14 relative"
+        className="sm:my-4 w-14 h-14 relative"
         variant="accent-1"
         size="regular"
         onClick={() => setOpen((prev) => !prev)}

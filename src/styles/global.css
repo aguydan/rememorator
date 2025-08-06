@@ -4,6 +4,22 @@
   --font-heading: "IBM Plex Mono", "sans-serif";
   --font-primary: "Inter", "sans-serif";
   --font-secondary: "Geist Mono", "sans-serif";
+
+  --color-yellow-200: #ffd98e;
+  --color-red-500: #fb8b77;
+  --color-blue-200: #a4c0f2;
+  --color-blue-400: #79a4f1;
+
+  --color-gray-200: #f8f8f8;
+  --color-gray-300: #e8e8e8;
+  --color-gray-400: #d9d9d9;
+  --color-gray-500: #b7b7b7;
+  --color-gray-700: #606060;
+  --color-gray-900: #4c4c4c;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  font-family: "Inter", "sans-serif";
+}

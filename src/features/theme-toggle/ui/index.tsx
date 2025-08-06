@@ -33,13 +33,13 @@ export default function ToggleThemeButton() {
   return (
     <Button
       onClick={toggleTheme}
-      className="px-2 min-w-22"
+      className="px-2 min-w-22 dark:bg-gray-900 transition-all ease-in-out"
       aria-label="Toggle theme"
     >
       <div
         className={twMerge(
           classes[theme],
-          "mr-auto relative w-[1lh] h-[1lh] rounded-xl bg-gray-400 transition-all ease-in-out",
+          "mr-auto relative w-[1lh] h-[1lh] rounded-xl bg-gray-900 transition-all ease-in-out",
         )}
       ></div>
     </Button>
