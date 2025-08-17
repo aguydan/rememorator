@@ -6,13 +6,13 @@ export function useDisclosure() {
   const openModal = () => {
     setOpen(true);
 
-    document.body.style.position = "fixed";
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setOpen(false);
 
-    document.body.style.position = "static";
+    document.body.style.overflow = "auto";
   };
 
   return [open, openModal, closeModal] as const;

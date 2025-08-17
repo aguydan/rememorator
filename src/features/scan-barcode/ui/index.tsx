@@ -59,7 +59,7 @@ export default function BarcodeScanner() {
           </div>
         </div>
       ) : (
-        <span className="font-secondary text-lg text-center">
+        <span className="font-secondary text-lg text-center dark:text-white">
           Video devices were not found
         </span>
       )}

@@ -19,35 +19,35 @@ export default function ProductCard({
     <article
       className={twMerge(
         classes[level],
-        "@container rounded-xl p-6 hover:outline-blue-200 hover:outline-2",
+        "@container rounded-xl p-6 hover:outline-2 hover:outline-blue-200 dark:bg-gray-900",
         className,
       )}
     >
-      <div className="flex flex-col justify-between gap-4 h-full">
-        <div className="font-secondary font-medium flex flex-col gap-2">
-          <h2 className="text-gray-700 text-xl @[20rem]:text-2xl">Круассан</h2>
-          <div className="hidden text-xl @[14rem]:flex flex-col gap-2">
+      <div className="flex h-full flex-col justify-between gap-4">
+        <div className="font-secondary flex flex-col gap-2 font-medium">
+          <h2 className="text-xl text-gray-700 @[20rem]:text-2xl">Круассан</h2>
+          <div className="hidden flex-col gap-2 text-xl @[14rem]:flex">
             <div className="flex items-center gap-3">
               <span className="text-gray-500">круассан</span>
               {/* to tags */}
-              <span className="text-[1rem]/[1.6rem] text-white bg-yellow-200 px-2 rounded-2xl">
+              <span className="rounded-2xl bg-yellow-200 px-2 text-[1rem]/[1.6rem] text-white">
                 340 ккал
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[1rem]/[1.6rem] text-white bg-blue-400 px-2 rounded-2xl">
+              <span className="rounded-2xl bg-blue-400 px-2 text-[1rem]/[1.6rem] text-white">
                 5.5г
               </span>
             </div>
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <div className="hidden @[12rem]:flex gap-3 font-secondary font-medium text-xl text-gray-500">
+          <div className="font-secondary hidden gap-3 text-xl font-medium text-gray-500 @[12rem]:flex">
             <span>круассан</span>
             <span>малина</span>
           </div>
-          <div className="flex ml-auto items-center justify-center bg-gray-400 w-[4rem] h-[4rem] rounded-full">
-            <span className="text-gray-700 font-medium text-xl @[20rem]:text-2xl">
+          <div className="ml-auto flex h-[4rem] w-[4rem] items-center justify-center rounded-full bg-gray-400">
+            <span className="text-xl font-medium text-gray-700 @[20rem]:text-2xl">
               356
             </span>
           </div>

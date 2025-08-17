@@ -1,5 +1,9 @@
 {
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-prisma"],
+  "plugins": [
+    "prettier-plugin-astro",
+    "prettier-plugin-prisma",
+    "prettier-plugin-tailwindcss"
+  ],
   "overrides": [
     {
       "files": "*.astro",

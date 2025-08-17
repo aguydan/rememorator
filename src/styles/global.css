@@ -21,5 +21,15 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
-  font-family: "Inter", "sans-serif";
+  font-family: var(--font-primary);
+}
+
+@layer utilities {
+  .btn-large {
+    @apply font-medium text-lg sm:text-xl px-5 pt-2 pb-2 sm:pt-18 sm:pb-4 rounded-xl;
+  }
+
+  .btn-light {
+    @apply bg-gray-400 text-gray-700 dark:bg-gray-900 dark:text-gray-200;
+  }
 }

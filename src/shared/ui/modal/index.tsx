@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import type { HTMLAttributes, PropsWithChildren } from "react";
+import type { CSSProperties, HTMLAttributes, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
@@ -16,8 +16,13 @@ export default function Modal({
     isOpen &&
     createPortal(
       <div
+        style={
+          {
+            "--scroll-y": window.scrollY + "px",
+          } as CSSProperties
+        }
         className={twMerge(
-          "absolute top-0 w-[100vw] h-[100vh] z-10 backdrop-blur-xl",
+          "absolute top-[var(--scroll-y)] z-200 h-[100vh] w-[100vw] backdrop-blur-xl",
           className,
         )}
         {...props}

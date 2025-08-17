@@ -20,7 +20,7 @@ export default function AddProductButton() {
         closeModal={closeModal}
         aside={
           <>
-            <Button size="large" className="bg-gray-200 text-gray-700">
+            <Button size="large" className="bg-gray-200">
               Find item
             </Button>
             <Button size="large" variant="accent-1">

@@ -9,7 +9,7 @@ export default function HeaderMenu({ className }: HeaderMenuProps) {
   return (
     <div
       className={twMerge(
-        "absolute -z-1 flex flex-col gap-6 -top-3 sm:top-0 -right-5 p-5 rounded-2xl shadow-sm bg-white w-[100vw] sm:w-[32rem]",
+        "absolute -z-1 flex flex-col gap-6 -top-3 sm:top-0 -right-5 p-5 rounded-2xl shadow-sm bg-white w-[100vw] sm:w-[32rem] dark:bg-gray-700 transition-colors",
         className,
       )}
     >
@@ -27,11 +27,11 @@ export default function HeaderMenu({ className }: HeaderMenuProps) {
           Log out
         </Button>
       </div>
-      <hr className="text-gray-200" />
+      <hr className="text-gray-200 dark:text-gray-900 transition-colors" />
       <nav className="flex flex-col font-secondary font-medium">
         <a href="/">
           <Button
-            className="text-black justify-between"
+            className="text-black justify-between dark:text-white transition-colors"
             variant="transparent"
             as="div"
             rightIcon={
@@ -43,7 +43,7 @@ export default function HeaderMenu({ className }: HeaderMenuProps) {
         </a>
         <a href="/fridge">
           <Button
-            className="text-black justify-between"
+            className="text-black justify-between dark:text-white transition-colors"
             variant="transparent"
             as="div"
             rightIcon={

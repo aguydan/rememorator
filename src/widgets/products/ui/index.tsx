@@ -8,8 +8,8 @@ import ScanBarcodeButton from "@/features/scan-barcode/ui/scan-barcode-button";
 
 export default function Products() {
   return (
-    <div className="flex flex-col items-center gap-20 mt-10 sm:mt-30 cursor-pointer">
-      <section className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-[min(60rem,_96%)]">
+    <div className="mt-10 flex cursor-pointer flex-col items-center gap-20 sm:mt-30">
+      <section className="grid w-[min(60rem,_96%)] grid-cols-2 gap-2 sm:grid-cols-4">
         {new Array(7).fill(null).map((_, index) => (
           <ProductCard
             key={index}
@@ -21,8 +21,8 @@ export default function Products() {
           />
         ))}
       </section>
-      <div className="sticky bottom-10 sm:bottom-20 flex bg-yellow-200 py-2 px-14 rounded-3xl w-[min(70rem,_96%)] mb-40 overflow-scroll">
-        <div className="flex gap-2 shrink-0">
+      <div className="sticky bottom-10 mb-40 flex w-[min(70rem,_96%)] overflow-scroll rounded-3xl bg-yellow-200 px-14 py-2 sm:bottom-20">
+        <div className="flex shrink-0 gap-2">
           <ScanBarcodeButton />
           <AddProductButton />
           <Button className="font-normal" size="medium" variant="accent-2">

@@ -7,19 +7,21 @@ import Container from "@/shared/ui/container/container.astro";
 // make header sticky
 ---
 
-<header class="pt-3 dark:bg-black">
+<header class="sticky top-0 z-100 pt-3">
   <Container>
     <div class="flex items-center justify-between">
       <a
-        class="font-heading text-3xl 2xl:text-7xl flex"
+        class="font-heading flex text-3xl 2xl:text-7xl"
         href="/"
         aria-label="Home"
       >
-        <span>Re</span>
-        <span class="text-gray-300">memo</span>
-        <span>rator</span>
+        <span class="transition-colors dark:text-gray-200">Re</span>
+        <span class="text-gray-300 transition-colors dark:text-blue-400"
+          >memo</span
+        >
+        <span class="transition-colors dark:text-gray-200">rator</span>
       </a>
-      <div class="items-center gap-18 hidden xl:flex">
+      <div class="hidden items-center gap-18 xl:flex">
         <HeaderButtons client:idle />
         <CircleButton variant="accent-1" size="medium">An</CircleButton>
       </div>

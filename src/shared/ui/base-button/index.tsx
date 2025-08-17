@@ -17,11 +17,10 @@ export interface BaseButtonProps<E extends ElementType = ElementType>
 const classes = {
   regular: "text-lg sm:text-xl px-5 py-2 rounded-2xl",
   medium: "font-medium text-xl xl:text-2xl px-6 py-4 rounded-2xl",
-  large:
-    "font-medium text-lg sm:text-xl px-5 pt-2 pb-2 sm:pt-18 sm:pb-4 rounded-xl",
-  light: "bg-gray-400",
+  large: "btn-large",
+  light: "btn-light",
   dark: "bg-gray-900 text-white",
-  "accent-1": "bg-blue-200 text-white",
+  "accent-1": "bg-blue-200 text-white dark:bg-blue-400",
   "accent-2": "bg-red-500 text-white",
   white: "bg-white",
   transparent: "text-gray-400 hover:bg-gray-200",
